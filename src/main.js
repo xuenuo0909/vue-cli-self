@@ -5,10 +5,12 @@ import App from './App';
 import router from './router';
 import ElementUI from 'element-ui';
 import Axios from '@/assets/axios';
+import handleError from '@/assets/handleError';
 
 Vue.config.productionTip = false;
 Vue.use(ElementUI);
 Vue.use(Axios);
+Vue.use(handleError);
 
 /* eslint-disable no-new */
 new Vue({

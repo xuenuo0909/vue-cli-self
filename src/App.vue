@@ -52,6 +52,7 @@ export default {
     }
   },
   created() {
+    this.$message.success('欢迎！');
     console.log(this.ceshiData, 'ceshiData');
   },
   methods: {
