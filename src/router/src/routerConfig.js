@@ -28,6 +28,7 @@ const baseRouter = (config) => {
     }
     // 判断组件
     if (item.component) {
+      // 此处为重点，动态引入组件
       setting.component = require(`@/components/${item.component}`).default;
       // setting.component = _import(item.component);
       if (item.children) {
@@ -47,6 +48,7 @@ const scrollBehavior = (to, from, savePosition) => {
   if (savePosition) {
     return savePosition;
   }
+  // 如果是 history 路由的话，以下代码失效
   const position = {};
   console.log(to, '纯to');
   if (to.hash) {

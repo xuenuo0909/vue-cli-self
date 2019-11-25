@@ -3,6 +3,9 @@
     <div>
       <button @click="handleClickGet">点我发送请求</button>
       <button @click="handleClickCancel">点我取消</button>
+      {{
+        ceshiData
+      }}12
     </div>
     <router-view/>
   </div>
@@ -10,12 +13,18 @@
 
 <script>
 import axios from 'axios';
+import Enums from '../src/assets/enums';
 export default {
   name: 'App',
   data() {
     return {
-      cancel: null
+      Enums,
+      cancel: null,
+      ceshiData: Enums.newData
     }
+  },
+  created() {
+    console.log(this.ceshiData, 'ceshiData');
   },
   methods: {
     // 请求

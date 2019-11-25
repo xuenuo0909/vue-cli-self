@@ -40,7 +40,7 @@ const scrollBehavior = (to, from, savePosition) => {
   if (savePosition) {
     return savePosition;
   }
-  // 如果是 histore 路由的话，以下代码失效
+  // 如果是 history 路由的话，以下代码失效
   const position = {};
   if (to.hash) {
     position.selector = to.hash;
