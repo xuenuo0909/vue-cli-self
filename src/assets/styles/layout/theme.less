@@ -1,0 +1,244 @@
+//重置 element 基本组件的样式
+.el {
+    &-rate__icon {
+        font-size: 12px;
+    }
+    //添加报告和查看报告页面星星的样式修改
+    &-icon-star-on-20px {
+        //选中
+        &:before {
+            content: "\E621";
+            font-size: 20px;
+            color: #FFBF00;
+        }
+        margin-right: 9px;
+    }
+    &-icon-star-off-20px {
+        //未选中
+        &:before {
+            content: "\E620";
+            font-size: 20px;
+            color: #D1D5DD;
+        }
+        margin-right: 9px;
+    }
+    &-icon-star-20px-disabled {
+        //禁用
+        &:before {
+            // content: "\E621";
+            content: "\E620";
+            font-size: 20px;
+            color: #D1D5DD;
+        }
+        margin-right:9px;
+    }
+    &-card {
+        border: none;
+    }
+    &-card:hover {
+        box-shadow: 0 1px 10px rgba(100, 100, 100, 0.2);
+    }
+    //面包屑
+    &-breadcrumb__item {
+        & &__inner {
+            color: #9FA4AD;
+            a {
+                color: #9FA4AD;
+            }
+            &:last-child {
+                color: #282E32;
+                a {
+                    color: #282E32;
+                }
+            }
+        }
+        &:last-child span {
+            color: #282E32!important;
+        }
+        &:first-child span {
+            color: #9FA4AD!important;
+        }
+    }
+    //侧边导航
+    &-submenu__title {
+        color: #303133;
+        background: #fff;
+    }
+    &-submenu {
+        .el-menu {
+            background-color: #fff;
+        }
+    }
+    &-menu {
+        color: #303133;
+        background-color: #fff;
+        &-item {
+            color: #303133;
+            background: #fff;
+            font-size: 14px;
+            border-right: 1px solid #e7e7e7;
+        }
+    }
+}
+
+//table
+.el-table {
+    border-color: #e7e7e7;
+    .cell {
+        padding: 0 15px;
+    }
+    th {
+        background-color: #fafafa;
+        &.is-leaf {
+            border-bottom-color: #e7e7e7;
+        }
+    }
+    &--border th,
+    &--border td {
+        border-color: #e7e7e7;
+    }
+    &__header-wrapper thead div {
+        color: #333;
+        background-color: #fafafa;
+    }
+    &__body-wrapper td {
+        font-size: 12px;
+        color: #4d4d4d;
+        width: 200px;
+    }
+    &--enable-row-hover tr:hover>td {
+        background-color: #fafafa;
+    }
+}
+
+//select
+.el-select {
+    width: 200px;
+    .el-input {
+        &__input {
+            color: #bfbfbf;
+        }
+        &__inner {
+            //height: 30px;
+            color: #333;
+            font-size: 12px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            border-color: #e7e7e7;
+        }
+    }
+    &-dropdown__item {
+        font-size: 12px;
+    }
+}
+
+//popover
+.el-popover {
+    background: #fff;
+    border-color: rgb(235, 235, 235);
+    min-width: auto;
+    color: rgb(95, 95, 95);
+    font-size: 12px;
+    border: 1px solid #e7e7e7;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.10);
+    border-radius: 6px;
+    &[x-placement^=top] {
+        .popper__arrow {
+            border-top-color: #e7e7e7;
+            &::after {
+                border-top-color: #fff;
+            }
+        }
+    }
+    &[x-placement^=bottom] {
+        .popper__arrow {
+            border-bottom-color: #e7e7e7;
+            &::after {
+                border-bottom-color: #fff;
+            }
+        }
+    }
+    &[x-placement^=left] {
+        .popper__arrow {
+            border-left-color: #e7e7e7;
+            &::after {
+                border-left-color: #fff;
+            }
+        }
+    }
+    &[x-placement^=right] {
+        .popper__arrow {
+            border-right-color: #e7e7e7;
+            &::after {
+                border-right-color: #fff;
+            }
+        }
+    }
+    //自定义 关闭窗样式
+    .popover-dialog {
+        position: relative;
+        &-close {
+            position: absolute;
+            top: -4px;
+            right: 0;
+            font-size: 12px;
+            color: #1daef8;
+            cursor: pointer;
+            z-index: 10;
+        }
+    }
+}
+
+// 去除chrome等浏览器保存密码输入框 黄色样式
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+    box-shadow: 0 0 0 60px #fff inset;
+}
+
+//覆盖textarea样式
+.el-textarea__inner {
+    font-size: 14px;
+    color: #626262;
+    height: 112px;
+    background: #FFFFFF;
+    border: 1px solid #E7E7E7;
+    border-radius: 2px;
+}
+
+// el-tab 选中颜色
+.el-tabs__item.is-active {
+    color: #333;
+    background-color: #fff;
+}
+
+.el-tabs--card>.el-tabs__header .el-tabs__item {
+    background-color: #fafafa;
+    border-bottom-color: #d1dbe5;
+    font-size: 14px;
+    color: #333;
+    &.is-active {
+        background-color: #fff;
+    }
+}
+
+// 课程设置增加课节弹框
+.el-select .el-input__inner {
+    font-size: 14px;
+    color: #4d4d4d;
+    input::-webkit-input-placeholder {
+        color: #b1b1b1;
+    }
+}
+
+.el-input__inner {
+    border: 1px solid #e7e7e7;
+    color: #4d4d4d;
+    input::-webkit-input-placeholder {
+        color: #b1b1b1;
+    }
+}
+
+.el-input__icon {
+    color: #bcbec3;
+}

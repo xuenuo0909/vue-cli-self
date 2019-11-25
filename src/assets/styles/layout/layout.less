@@ -1,0 +1,123 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    // background-color: #ebecee;
+    font-family: Microsoft YaHei, '微软雅黑', Arial, Tahoma, STHeiti, Helvetica, "\5b\4f53", sans-serif;
+    font-size: 14px;
+}
+
+.layout {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    margin: 0 auto;
+}
+
+.layout-header {
+    min-width: 1200px;
+    box-shadow: 0 0 4px #ccc;
+    background-color: #1daef8;
+}
+
+.layout-header-inner {
+    position: relative;
+    width: 1200px;
+    height: 60px;
+    margin: 0 auto;
+}
+
+.layout-wrap {
+    position: relative;
+    width: 1200px;
+    min-height: 560px;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 2px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.layout-sidebar {
+    position: relative;
+    width: 200px;
+    height: 100%;
+    min-height: 560px;
+    box-sizing: border-box;
+    border-right: 1px solid #e7e7e7;
+}
+
+.layout-sidebar .el-menu {
+    border-right: 0;
+}
+
+.layout-content {
+    position: relative;
+    min-height: 500px;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.layout-breadcrumb {
+    position: relative;
+    height: 50px;
+    line-height: 50px;
+    padding-left: 20px;
+    font-size: 14px;
+    border-bottom: 1px solid #eee;
+    box-sizing: border-box;
+    background-color: #fff;
+    a {
+        display: inline-block;
+        text-decoration: none;
+        color: #999;
+    }
+    i {
+        margin-right: 3px;
+        font-size: 16px;
+        color: #eab127;
+    }
+}
+
+.layout-breadcrumb .el-breadcrumb {
+    line-height: 50px;
+}
+
+.layout-breadcrumb-info {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.layout-footer {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 0 20px;
+    clear: both;
+    font-size: 12px;
+    &-inner {
+        margin: 0 auto;
+    }
+}
+
+.pagination {
+    position: relative;
+    height: 30px;
+    line-height: 30px;
+    margin: 20px 0;
+}
+
+.pagination-record {
+    font-size: 12px;
+    color: #6a6a6a;
+    float: left;
+}
+
+.pagination .el-pagination {
+    padding: 0;
+    float: right;
+}
