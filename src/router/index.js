@@ -23,7 +23,7 @@ const loadRouter = configs => {
 
     if (item.component) {
       route.component = _import(item.component);
-      console.log(_import(item.component));
+      // console.log(_import(item.component));
       if (item.children) {
         route.children = loadRouter(item.children);
       }
@@ -51,7 +51,7 @@ const scrollBehavior = (to, from, savePosition) => {
   }
   return position;
 }
-console.log(loadRouter(router));
+// console.log(loadRouter(router));
 export default new Router({
   mode: 'history',
   scrollBehavior: scrollBehavior,

@@ -1,71 +1,67 @@
+// 引入vue
 import Vue from 'vue';
+// 引入axios
 import Axios from 'axios';
-
-const env = process.env.NODE_ENV;
-
+// 创建axios实例
 const instance = Axios.create({
-  withCredentials: true,
+  // withCredentials: true, // 简单理解为是否需要请求携带cookie
   timeout: 20000
 });
 
+// 设置请求头
+instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';// 也可以不在这里封装
+
+// 拦截器
 instance.interceptors.request.use(config => {
-  let baseAPI = '';
-  let toPath = '';
-
-  const paths = config.url.split('/');
-  const rpc = feConfig.proxy.find(rpc => rpc.name === paths[1]);
-
-  if (rpc) {
-    baseAPI = rpc.host;
-  } else {
-    Vue.prototype.$message.error(`${ path[1] } 对应的转发 HOST未设置，请在 feConfig 目录下设置`);
-  }
-
-  if (env === 'development') {
-    toPath = [].concat([''], paths.slice(1)).join('/');
-  } else {
-    toPath = [].concat([''], path.slice(2)).join('/');
-    config.url = baseAPI + toPath;
-  }
+  // 登录流程控制中，根据本地是否存在 token 判断用户的登录情况
+  // 但是即使 token 存在，也不能保证当前 token 是最新的
+  // 所以每次在请求头携带 token 进行数据请求
+  // 后台根据携带的 token 判断用户的登录情况，并返回给我们对应的状态码
+  // 可以在相应拦截器中，根据状态码进行一些统一的操作
+  const token = 'token';// 此处仅仅是随便输入了一个字段，因为不涉及后端服务
+  token && (config.headers.Authorization = token);
   return config;
+}, error => {
+  Promise.reject(error || '内部错误');
+});
+// 相应拦截器
+instance.interceptors.response.use(res => {
+  return res.status === 200 ? Promise.resolve(res) : Promise.reject(res);
+}, error => {
+  const { response } = error;
+  if (response) {
+    // 请求已发出，但是范围不在 2xx 内
+    errorHandle(response.status, response.data.massage);
+    return Promise.reject(response);
+  } else {
+    // 处理断网的情况
+    // eg：请求超时或断网时，更新 state 的 network 状态
+    // network 状态在 app.vue 中控制着一个全局的断网提示组件的显示隐藏
+    // your code
+    return Promise.reject(error);
+  }
 });
 
-instance.interceptors.response.use(response => {
-  if (
-    response && response.data &&
-    Enums.ErrorCode.CookieInvalid === response.data.code &&
-    evn !== 'development'
-  ) {
-    location.href = `${ feConfig.LOGOUT_URL }${ location.origin }`;
+/**
+* 请求失败后的错误统一处理
+* @param {Number} status 请求失败的状态码
+*/
+const errorHandle = (status, other) => {
+  // 状态码判断
+  switch (status) {
+    // 401：未登录
+    case 401:
+      // your code，可以跳转回登录页
+    break;
+    // 403 token 过期
+    case 403:
+    break;
+    // 404 请求不存在
+    case 404:
+    break;
+    default:
+    console.log(other);
   }
-  return response.data;
-}, err => {
-  // 请求已经完成，但是返回状态不是 2xx
-  // err.response 承载的是请求失败返回的错误相关信息
-  // err.response.data 承载的是请求失败后端返回的错误内容
-  // 该类型报错返回 Promise.reject ,触发请求的 catch ,在 catch 中处理错误
-  if (err.response) {
-    /* eslint prefer-promise-reject-errors: 0 */
-    return Promise.reject({
-      config: err.response.config,
-      code: err.response.status,
-      data: err.response.data
-    });
-  }
-  // 在设置触发错误的请求时发生了其他错误
-  return Promise.reject({ code: 1024, message: '网络可能出问题了 *_*，请稍后再试一次', config: err });
-});
-
-function axios(options) {
-  let cookie = null;
-  if (options.cookie) {
-    cookie = `${options.cookie.key}=${options.cookie.value}`;
-    delete options.cookie;
-  }
-  const instance = Axios.create(Object.assign({
-    timeout: 4000
-  }, options, cookie ? { headers: { 'Cookie': cookie } } : {}));
-  return instance;
 }
 
 function plugin(Vue) {
@@ -75,14 +71,13 @@ function plugin(Vue) {
   plugin.installed = true;
 
   Vue.http = instance;
-  Vue.axios = axios;
+  Vue.axios = Axios;
 
   Object.defineProperty(Vue.prototype, '$http', { value: instance });
-  Object.defineProperty(Vue.prototype, '$axios', { value: axios });
+  Object.defineProperty(Vue.prototype, '$axios', { value: Axios });
 }
 
 if (typeof window !== 'undefined' && window.Vue) {
   window.Vue.use(plugin);
 }
-
 export default plugin;

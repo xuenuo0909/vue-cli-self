@@ -50,7 +50,7 @@ const scrollBehavior = (to, from, savePosition) => {
   }
   // 如果是 history 路由的话，以下代码失效
   const position = {};
-  console.log(to, '纯to');
+  // console.log(to, '纯to');
   if (to.hash) {
     position.selector = to.hash
   }
@@ -58,7 +58,7 @@ const scrollBehavior = (to, from, savePosition) => {
     position.x = 0;
     position.y = 0;
   }
-  console.log(position, '打印position');
+  // console.log(position, '打印position');
   return position;
 }
 
