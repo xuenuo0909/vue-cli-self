@@ -43,4 +43,4 @@ export const router = [
     name: 'Page',
     component: 'Page'
   }
-]
+];
