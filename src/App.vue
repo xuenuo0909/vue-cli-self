@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <div>
+      <button @click="handleTGD">调高度</button>
       <button @click="handleClickGet">点我发送请求</button>
       <button @click="handleClickCancel">点我取消</button>
       {{
@@ -28,12 +29,17 @@ export default {
     }
   },
   created() {
+    // console.log(window)
     // console.log(Math);
     // console.log(this.$http, 'daadad');
     // this.$message.success('欢迎！');
     // console.log(this.ceshiData, 'ceshiData');
   },
   methods: {
+    handleTGD(e) {
+      console.log(e.y);
+      window.scrollTo(0, 50);
+    },
     // 请求
     handleClickGet() {
       const CancelToken = axios.CancelToken;

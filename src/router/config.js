@@ -42,5 +42,20 @@ export const router = [
     path: '/page',
     name: 'Page',
     component: 'Page'
+  },
+  {
+    path: '/modifymm',
+    name: 'Page',
+    component: 'modifymm'
+  },
+  {
+    path: '/huahzhuan',
+    name: 'huahzhuan',
+    component: 'huahzhuan'
+  },
+  {
+    path: '/shiyong',
+    name: 'shiyong',
+    component: 'shiyong'
   }
 ];

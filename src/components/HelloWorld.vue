@@ -45,7 +45,34 @@ export default {
               caption: '你好！'
             }
           ]
-        }
+        },
+        {
+          title: '修改密码',
+          links: [
+            {
+              url: '/modifymm',
+              caption: '你好！'
+            }
+          ]
+        },
+        {
+          title: '划转学生',
+          links: [
+            {
+              url: '/huahzhuan',
+              caption: '划转'
+            }
+          ]
+        },
+        {
+          title: '适用老师',
+          links: [
+            {
+              url: '/shiyong',
+              caption: '适用'
+            }
+          ]
+        },
       ]
     };
   }
