@@ -42,12 +42,13 @@ export default {
     },
     // 请求
     handleClickGet() {
-      const CancelToken = axios.CancelToken;
-      const source = CancelToken.source();
+      // 请求本地json文件
       // axios.get('/static/data.json')
       //   .then(res => {
       //     console.log(res);
       //   })
+      const CancelToken = axios.CancelToken;
+      const source = CancelToken.source();
       const _this = this;
       this.$http.get('/iyunxiao/v1/planners/configs/planner-info', {
         cancelToken: new CancelToken(function executor(c) {

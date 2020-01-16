@@ -19,7 +19,7 @@ export const router = [
   {
     path: '/hello',
     name: 'Hello',
-    component: 'Hello'
+    component: 'input'
   },
   {
     path: '/note',

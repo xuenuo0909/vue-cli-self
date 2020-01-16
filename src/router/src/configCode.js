@@ -30,7 +30,7 @@ const baseRouter = (routerResult) => {
     if (meta) {
       newItem.meta = meta;
     }
-    // 判断组件，进行动态徐渲染
+    // 判断组件，进行动态渲染
     if (item.component) {
       // 动态引入组件
       newItem.component = require(`@/components/${ item.component }`).default;

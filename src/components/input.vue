@@ -10,11 +10,17 @@
 </template>
 
 <script>
+import createRound from '@/constants/createRound';
+
 export default {
   data() {
     return {
       value: ''
     }
+  },
+  beforeMount() {
+    
+    
   },
   methods: {
     handlerMouseWheel() {
@@ -24,7 +30,11 @@ export default {
       }
     },
     replaceValue(value) {
-      value = value.replace(/(^0)|(-)|\./g, '');
+      // console.log(value)
+      const round = createRound('round');
+      // this.value = Math.round(value);
+      this.value = round(value, 2);
+      // this.value = value.replace(/(^0)|(-)|\./g, '');
     },
   }
 }
