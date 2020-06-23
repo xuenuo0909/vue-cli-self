@@ -30,6 +30,9 @@ export default {
       open: true
     }
   },
+  beforeMount() {
+    console.log(this.$route);
+  },
   methods: {
     handleClick() {
       this.open = false;

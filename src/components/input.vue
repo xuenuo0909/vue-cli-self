@@ -2,6 +2,7 @@
   <el-input
     :min="1"
     type="number"
+    style="width: 500px;"
     placeholder="请输入正整数"
     v-model="value"
     @mousewheel.native="handlerMouseWheel"
@@ -33,7 +34,7 @@ export default {
       // console.log(value)
       const round = createRound('round');
       // this.value = Math.round(value);
-      this.value = round(value, 2);
+      this.value = round(value, 21);
       // this.value = value.replace(/(^0)|(-)|\./g, '');
     },
   }

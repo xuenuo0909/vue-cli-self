@@ -26,6 +26,7 @@ instance.interceptors.request.use(config => {
 });
 // 相应拦截器
 instance.interceptors.response.use(res => {
+  // 判断当前状态码
   return res.status === 200 ? Promise.resolve(res) : Promise.reject(res);
 }, error => {
   const { response } = error;
